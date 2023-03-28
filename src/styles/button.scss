@@ -1,0 +1,22 @@
+.primary-button {
+  background: #2ecc71;
+  color: #fff;
+  transition: background 0.3s;
+  font-weight: bold;
+
+  &:hover {
+    background: #27ae60;
+  }
+
+  &:active {
+    background: #1e8649;
+  }
+}
+
+button {
+  cursor: pointer;
+  border: 0;
+  border-radius: 7px;
+  padding: 10px;
+  cursor: pointer;
+}

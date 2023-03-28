@@ -1,0 +1,10 @@
+<div class="shipment-items">
+  <div
+    class="shipment-items--item"
+    *ngFor="let item of items"
+  >
+    <span>{{ item.name }}</span>
+    <button class="shipment-items--remove" (click)="remove.emit(item.tempId)">X</button>
+  </div>
+</div>
+<button class="primary-button" *ngIf="items.length > 0" (click)="createShipment.emit()">Create new shipment</button>
