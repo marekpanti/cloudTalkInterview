@@ -6,6 +6,10 @@ const routes: Routes = [
   {
     path: '',
     component: ItemsListComponent
+  },
+  {
+    path: 'shipment',
+    loadComponent: () => import('./pages/shipment-list/shipment-list.component').then(component => component.ShipmentListComponent)
   }
 ];
 

@@ -17,8 +17,11 @@ import { WarehouseItem } from '../../../../core/models/warehouseItem';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ListItemComponent {
-  @Input() item: WarehouseItem;
-  @Output() addToShipment: EventEmitter<void> = new EventEmitter<void>();
+  @Input() items: WarehouseItem[];
+  @Output() addToShipment: EventEmitter<WarehouseItem> = new EventEmitter<WarehouseItem>();
 
+  ngOnChanges() {
+    console.log('tada');
+  }
   constructor() {}
 }

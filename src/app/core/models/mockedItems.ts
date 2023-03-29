@@ -5,7 +5,7 @@ export const MockedItems = [
     name: 'CloudTalk logo sticker',
     description:
       'High-quality sticker of the best cloud calling solution provider in  the world',
-    quantity: 100,
+    quantity: 2,
     unitPrice: 1,
   },
   {
@@ -14,7 +14,7 @@ export const MockedItems = [
     name: 'Facebook logo sticker',
     description:
       'High-quality sticker of the best cloud calling solution provider in  the world',
-    quantity: 100,
+    quantity: 3,
     unitPrice: 1,
   },
   {
@@ -23,7 +23,7 @@ export const MockedItems = [
     name: 'CloudTalk logo sticker',
     description:
       'High-quality sticker of the best cloud calling solution provider in  the world',
-    quantity: 100,
+    quantity: 1,
     unitPrice: 1,
   },
   {
@@ -32,7 +32,7 @@ export const MockedItems = [
     name: 'CloudTalk logo sticker',
     description:
       'High-quality sticker of the best cloud calling solution provider in  the world',
-    quantity: 100,
+    quantity: 1,
     unitPrice: 1,
   },
 ];

@@ -1,2 +1,16 @@
-<h3>Create shipment:</h3>
 <button (click)="close()">Close Panel</button>
+<h3>Create shipment:</h3>
+
+<form [formGroup]="shipmentForm">
+  <label for="name">Company name:</label>
+  <input name="name" type="text" formControlName="companyName">
+  <label for="date">Shipment is due to:</label>
+  <input name="date" type="date" formControlName="scheduledTo">
+  <label for="status">Select shipment status:</label>
+  <select name="status" formControlName="status">
+    <option value="volvo">Volvo</option>
+    <option value="saab">Saab</option>
+    <option value="opel">Opel</option>
+  </select>
+</form>
+<button class="primary-button" (click)="save()">Create shipment</button>

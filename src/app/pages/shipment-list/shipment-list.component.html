@@ -1,0 +1,9 @@
+<h1>Shipment List</h1>
+
+<div class="card">
+  <h3>Shipment items</h3>
+  <div *ngFor="let shipment of shipments$ | async">
+    {{ shipment.companyName }}
+  </div>
+
+</div>

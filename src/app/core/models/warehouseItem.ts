@@ -17,7 +17,7 @@ export interface Shipment {
   createdAt: Date
   scheduledTo: Date
   items: number[]
-  unitPrice: number
+  totalPrice: number
   lastUpdate: Date
   status: ShipmentStatus
 }

@@ -1,5 +1,6 @@
 import {
   ChangeDetectionStrategy,
+  ChangeDetectorRef,
   Component,
   EventEmitter,
   Input,
@@ -18,8 +19,17 @@ import { ItemInShipment } from '../../../../core/models/warehouseItem';
 })
 export class ShipmentItemsComponent {
   @Input() items: ItemInShipment[];
-  @Output() remove: EventEmitter<string> = new EventEmitter<string>();
-  @Output() createShipment: EventEmitter<void> = new EventEmitter<void>();
+  @Output() remove: EventEmitter<{tempId: string, id: number}> = new EventEmitter<{tempId: string, id: number}>();
+  @Output() createShipment: EventEmitter<ItemInShipment[]> = new EventEmitter<ItemInShipment[]>();
 
-  constructor() {}
+  constructor(private cdRef: ChangeDetectorRef) {}
+
+  removeItem(item: ItemInShipment) {
+    this.remove.emit({tempId: item.tempId, id: item.id})
+    this.cdRef.markForCheck();
+  }
+
+  addItemsToShipment() {
+    this.createShipment.emit(this.items)
+  }
 }

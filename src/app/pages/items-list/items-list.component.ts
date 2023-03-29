@@ -1,8 +1,8 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ListItemComponent } from './components/list-item/list-item.component';
-import { WarehouseItem } from '../../core/models/warehouseItem';
-import { ItemsMockService } from './items-facade.service';
+import { ItemInShipment, WarehouseItem } from '../../core/models/warehouseItem';
+import { ItemsService } from './items-facade.service';
 import { ShipmentItemsComponent } from './components/shipment-item/shipment-item.component';
 import { SidePanelService } from 'src/app/shared/services/side-panel/side-panel.service';
 import { CreateShipmentComponent } from './components/create-shipment/create-shipment.component';
@@ -15,29 +15,33 @@ import { OverlayModule } from '@angular/cdk/overlay';
   templateUrl: './items-list.component.html',
   styleUrls: ['./items-list.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [ItemsMockService],
 })
 export class ItemsListComponent {
-  public items$ = this.itemsMockService.mockedItems$;
-  public inShipment$ = this.itemsMockService.inShipment$;
+  public items$ = this.itemsService.mockedItems$;
+  public inShipment$ = this.itemsService.inShipment$;
 
-  // in theory we could have ItemsMockService declared as public, then we could acces the behavior subject directly in the template
+  // in theory we could have ItemsService declared as public, then we could acces the behavior subject directly in the template
   constructor(
-    private itemsMockService: ItemsMockService,
-    private panel: SidePanelService
-  ) {}
+    private itemsService: ItemsService,
+    private panel: SidePanelService,
+    private cdRef: ChangeDetectorRef
+  ) {
+    this.items$.subscribe(d => (console.log('items: ', d)))
+  }
 
   addItemToShipment(item: WarehouseItem): void {
-    this.itemsMockService.addToCurrentShipment(item);
+    this.itemsService.addToCurrentShipment(item);
   }
 
-  removeShipment(tempId: string) {
-    console.log(tempId);
-    this.itemsMockService.removeFromCurrentShipment(tempId);
+  removeShipment(ids: {tempId: string, id: number}) {
+    console.log(ids.tempId);
+    this.itemsService.removeFromCurrentShipment(ids.tempId, ids.id);
+    this.cdRef.detectChanges();
   }
 
-  createShipment() {
-    const filterRef = this.panel.open(CreateShipmentComponent, { data: null });
+  createShipment(items: ItemInShipment[]) {
+    console.log(items);
+    const filterRef = this.panel.open(CreateShipmentComponent, { data: items });
     filterRef.afterClosed().subscribe(() => {
       console.log('filter is closed');
     });
