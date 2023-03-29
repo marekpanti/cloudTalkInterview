@@ -1,4 +1,4 @@
-import { Shipment, ShipmentStatus } from './warehouseItem';
+import { Shipment, ShipmentStatus } from './warehouse.model';
 
 export const MockedShipments: Shipment[] = [
   {

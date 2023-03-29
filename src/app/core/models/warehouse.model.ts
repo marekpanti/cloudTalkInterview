@@ -1,3 +1,5 @@
+import { FormControl } from "@angular/forms"
+
 export interface WarehouseItem {
     imageUrl: string
     id: number
@@ -26,4 +28,10 @@ export enum ShipmentStatus {
   PREPARED = "Prepared",
   CREATED = "Created",
   SHIPPED = "Shipped"
+}
+
+export interface LoginForm {
+  companyName: FormControl<string>;
+  scheduledTo: FormControl<Date>;
+  status: FormControl<ShipmentStatus>;
 }

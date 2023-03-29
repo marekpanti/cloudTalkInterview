@@ -6,7 +6,7 @@ import {
   Output,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { WarehouseItem } from '../../../../core/models/warehouseItem';
+import { WarehouseItem } from '../../../../core/models/warehouse.model';
 
 @Component({
   selector: 'app-list-item',

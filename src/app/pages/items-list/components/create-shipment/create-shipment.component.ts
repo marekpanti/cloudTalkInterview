@@ -9,15 +9,9 @@ import {
   Validators,
 } from '@angular/forms';
 import { ShipmentService } from 'src/app/pages/shipment-list/shipment-list.facade';
-import { Shipment, ShipmentStatus } from 'src/app/core/models/warehouseItem';
+import { LoginForm, Shipment, ShipmentStatus } from 'src/app/core/models/warehouse.model';
 import { SIDE_PANEL_DATA } from 'src/app/shared/services/side-panel/side-panel.service';
 import { ItemsService } from '../../items-facade.service';
-
-export interface LoginForm {
-  companyName: FormControl<string>;
-  scheduledTo: FormControl<Date>;
-  status: FormControl<ShipmentStatus>;
-}
 
 @Component({
   selector: 'app-create-shipment',
@@ -29,6 +23,7 @@ export interface LoginForm {
   providers: [Overlay],
 })
 export class CreateShipmentComponent {
+  shipmentStatuses = ShipmentStatus;
   shipmentForm = new FormGroup<LoginForm>({
     companyName: new FormControl('', {
       nonNullable: true,
@@ -56,6 +51,7 @@ export class CreateShipmentComponent {
   }
 
   save() {
+    // this logic should be in service
     if (
       this.shipmentForm.value.companyName &&
       this.shipmentForm.value.scheduledTo &&

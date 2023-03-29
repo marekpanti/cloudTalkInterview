@@ -13,6 +13,21 @@
   }
 }
 
+.warn-button {
+  background: #cc362e;
+  color: #fff;
+  transition: background 0.3s;
+  font-weight: bold;
+
+  &:hover {
+    background: #ab2c25;
+  }
+
+  &:active {
+    background: #761a15;
+  }
+}
+
 button {
   cursor: pointer;
   border: 0;

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, of, ReplaySubject } from 'rxjs';
 import { MockedItems } from 'src/app/core/models/mockedItems';
-import { ItemInShipment, WarehouseItem } from '../../core/models/warehouseItem';
+import { ItemInShipment, WarehouseItem } from '../../core/models/warehouse.model';
 
 @Injectable({providedIn: 'root'})
 export class ItemsService {

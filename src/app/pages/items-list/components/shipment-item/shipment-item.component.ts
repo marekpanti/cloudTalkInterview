@@ -7,7 +7,7 @@ import {
   Output,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ItemInShipment } from '../../../../core/models/warehouseItem';
+import { ItemInShipment } from '../../../../core/models/warehouse.model';
 
 @Component({
   selector: 'app-shipment-items',

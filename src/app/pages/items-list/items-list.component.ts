@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ListItemComponent } from './components/list-item/list-item.component';
-import { ItemInShipment, WarehouseItem } from '../../core/models/warehouseItem';
+import { ItemInShipment, WarehouseItem } from '../../core/models/warehouse.model';
 import { ItemsService } from './items-facade.service';
 import { ShipmentItemsComponent } from './components/shipment-item/shipment-item.component';
 import { SidePanelService } from 'src/app/shared/services/side-panel/side-panel.service';
