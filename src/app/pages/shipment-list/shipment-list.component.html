@@ -1,0 +1,17 @@
+<h1>Shipment List</h1>
+
+<div class="card">
+  <h3>Shipment items</h3>
+  <div class="shipment-item" *ngFor="let shipment of shipments$ | async">
+    <span
+      >Company name: <strong>{{ shipment.companyName }}</strong></span
+    >
+    <span
+      >Created at: <strong>{{ shipment.createdAt | date }}</strong
+      >, due to: <strong>{{ shipment.scheduledTo | date }}</strong></span
+    >
+    <span>Status: <strong [ngClass]="shipment.status" (click)="changeStatus(shipment.id)">{{ shipment.status }}</strong></span>
+    <button class="warn-button" (click)="removeShipment(shipment.id)">Remove</button>
+    <button class="primary-button" (click)="editShipment(shipment)">Edit shipment</button>
+  </div>
+</div>

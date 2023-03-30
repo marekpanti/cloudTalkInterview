@@ -1,0 +1,21 @@
+.shipment-item {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  line-height: 1.5;
+  border-bottom: 2px solid #2a2a2a;
+  margin: 2rem;
+  padding: 2rem;
+}
+
+.Created {
+  color: rgb(230, 33, 33);
+}
+
+.Prepared {
+  color: rgb(219, 149, 19);
+}
+
+.Shipped {
+  color: rgb(13, 187, 13);
+}

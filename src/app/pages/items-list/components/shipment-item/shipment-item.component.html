@@ -1,0 +1,13 @@
+<div class="shipment-items">
+  <div class="shipment-items--item" *ngFor="let item of items">
+    <span>{{ item.name }}</span>
+    <button class="shipment-items--remove" (click)="removeItem(item)">X</button>
+  </div>
+</div>
+<button
+  class="primary-button"
+  *ngIf="items.length > 0"
+  (click)="addItemsToShipment()"
+>
+  Create new shipment
+</button>

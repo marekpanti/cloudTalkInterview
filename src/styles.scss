@@ -1,1 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
+
+// Import css components, variables and other
+@import "@angular/cdk/overlay-prebuilt.css";
+@import url(styles/button.scss);
+@import url(styles/general-styles.scss);

@@ -1,0 +1,25 @@
+.list-item {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  line-height: 2;
+
+  &--image img {
+    width: 50px;
+    height: 50px;
+  }
+
+  &--content {
+    display: flex;
+    flex: 0.9;
+    flex-direction: column;
+    justify-content: space-around;
+    padding: 0 10px;
+  }
+}
+
+.warn {
+  color: #f49600;
+}
