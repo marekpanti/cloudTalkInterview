@@ -4,7 +4,7 @@ import { MockedItems } from 'src/app/core/models/mockedItems';
 import { ItemInShipment, WarehouseItem } from '../../core/models/warehouse.model';
 
 @Injectable({providedIn: 'root'})
-export class ItemsService {
+export class ItemsFacadeService {
   // I used BehaviorSubject instead so we have our small chunk of state created
   public mockedItems$ = new BehaviorSubject<WarehouseItem[]>(MockedItems);
   public inShipment$ = new BehaviorSubject<ItemInShipment[]>([]);

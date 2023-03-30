@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { ItemsService } from './items-facade.service';
+import { ItemsFacadeService } from './items-facade.service';
 
 describe('ItemsMockService', () => {
-  let service: ItemsService;
+  let service: ItemsFacadeService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(ItemsService);
+    service = TestBed.inject(ItemsFacadeService);
   });
 
   it('should be created', () => {
@@ -19,4 +19,6 @@ describe('ItemsMockService', () => {
   // Test removeCurrentSHipment check if the length of the shippments is decreased
 
   // Test changeItemQuantity add one and remove one
+
+  // Delete shipment should return 0 currentSHipment
 });

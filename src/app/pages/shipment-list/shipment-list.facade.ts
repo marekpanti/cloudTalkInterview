@@ -2,13 +2,13 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { MockedShipments } from 'src/app/core/models/mockedShipments';
 import { Shipment, ShipmentStatus } from '../../core/models/warehouse.model';
-import { ItemsService } from '../items-list/items-facade.service';
+import { ItemsFacadeService } from '../items-list/items-facade.service';
 
 @Injectable({ providedIn: 'root' })
-export class ShipmentService {
+export class ShipmentFacadeService {
   public mockedShipments$ = new BehaviorSubject<Shipment[]>(MockedShipments);
 
-  constructor(private itemService: ItemsService) {}
+  constructor(private itemService: ItemsFacadeService) {}
 
   createShipment(shipment: Shipment) {
     const currentShipments = this.mockedShipments$.getValue();

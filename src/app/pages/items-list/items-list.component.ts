@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ListItemComponent } from './components/list-item/list-item.component';
 import { ItemInShipment, WarehouseItem } from '../../core/models/warehouse.model';
-import { ItemsService } from './items-facade.service';
+import { ItemsFacadeService } from './items-facade.service';
 import { ShipmentItemsComponent } from './components/shipment-item/shipment-item.component';
 import { SidePanelService } from 'src/app/shared/services/side-panel/side-panel.service';
 import { CreateShipmentComponent } from '../../shared/components/create-shipment/create-shipment.component';
@@ -21,7 +21,7 @@ export class ItemsListComponent {
   public inShipment$ = this.itemsService.inShipment$;
 
   // in theory we could have ItemsService declared as public, then we could acces the behavior subject directly in the template
-  constructor(private itemsService: ItemsService, private panel: SidePanelService) {}
+  constructor(private itemsService: ItemsFacadeService, private panel: SidePanelService) {}
 
   addItemToShipment(item: WarehouseItem): void {
     this.itemsService.addToCurrentShipment(item);

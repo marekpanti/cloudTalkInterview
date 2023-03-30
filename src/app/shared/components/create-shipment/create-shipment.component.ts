@@ -8,7 +8,7 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { ShipmentService } from 'src/app/pages/shipment-list/shipment-list.facade';
+import { ShipmentFacadeService } from 'src/app/pages/shipment-list/shipment-list.facade';
 import {
   ItemInShipment,
   LoginForm,
@@ -16,7 +16,7 @@ import {
   ShipmentStatus,
 } from 'src/app/core/models/warehouse.model';
 import { SIDE_PANEL_DATA } from 'src/app/shared/services/side-panel/side-panel.service';
-import { ItemsService } from '../../../pages/items-list/items-facade.service';
+import { ItemsFacadeService } from '../../../pages/items-list/items-facade.service';
 
 @Component({
   selector: 'app-create-shipment',
@@ -46,8 +46,8 @@ export class CreateShipmentComponent {
 
   constructor(
     private sidePanelRef: SidePanelRef,
-    private shipmentService: ShipmentService,
-    private itemsService: ItemsService,
+    private shipmentService: ShipmentFacadeService,
+    private itemsService: ItemsFacadeService,
     // this should be typed, a general interface should be crated with isEditing: boolean, itemInShipment and shipment
     @Inject(SIDE_PANEL_DATA) public data: any
   ) {}

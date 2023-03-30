@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ShipmentService } from './shipment-list.facade';
+import { ShipmentFacadeService } from './shipment-list.facade';
 import { Shipment } from 'src/app/core/models/warehouse.model';
 import { CreateShipmentComponent } from 'src/app/shared/components/create-shipment/create-shipment.component';
 import { SidePanelService } from 'src/app/shared/services/side-panel/side-panel.service';
@@ -17,7 +17,7 @@ export class ShipmentListComponent {
 
   // in theory we could have ItemsMockService declared as public, then we could acces the behavior subject directly in the template
   constructor(
-    private shipmentService: ShipmentService,
+    private shipmentService: ShipmentFacadeService,
     private panel: SidePanelService
   ) {}
 
