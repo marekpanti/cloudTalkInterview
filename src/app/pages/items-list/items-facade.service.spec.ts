@@ -17,4 +17,6 @@ describe('ItemsMockService', () => {
   // Test addToCurrentShipment and checked if the length of the shipments is greater
 
   // Test removeCurrentSHipment check if the length of the shippments is decreased
+
+  // Test changeItemQuantity add one and remove one
 });

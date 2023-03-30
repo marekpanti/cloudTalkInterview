@@ -1,11 +1,4 @@
-import {
-  ChangeDetectionStrategy,
-  ChangeDetectorRef,
-  Component,
-  EventEmitter,
-  Input,
-  Output,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ItemInShipment } from '../../../../core/models/warehouse.model';
 
@@ -19,17 +12,16 @@ import { ItemInShipment } from '../../../../core/models/warehouse.model';
 })
 export class ShipmentItemsComponent {
   @Input() items: ItemInShipment[];
-  @Output() remove: EventEmitter<{tempId: string, id: number}> = new EventEmitter<{tempId: string, id: number}>();
+  @Output() remove: EventEmitter<{ tempId: string; id: number }> = new EventEmitter<{ tempId: string; id: number }>();
   @Output() createShipment: EventEmitter<ItemInShipment[]> = new EventEmitter<ItemInShipment[]>();
 
-  constructor(private cdRef: ChangeDetectorRef) {}
+  constructor() {}
 
   removeItem(item: ItemInShipment) {
-    this.remove.emit({tempId: item.tempId, id: item.id})
-    this.cdRef.markForCheck();
+    this.remove.emit({ tempId: item.tempId, id: item.id });
   }
 
   addItemsToShipment() {
-    this.createShipment.emit(this.items)
+    this.createShipment.emit(this.items);
   }
 }

@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ListItemComponent } from './components/list-item/list-item.component';
 import { ItemInShipment, WarehouseItem } from '../../core/models/warehouse.model';
@@ -21,19 +21,14 @@ export class ItemsListComponent {
   public inShipment$ = this.itemsService.inShipment$;
 
   // in theory we could have ItemsService declared as public, then we could acces the behavior subject directly in the template
-  constructor(
-    private itemsService: ItemsService,
-    private panel: SidePanelService,
-    private cdRef: ChangeDetectorRef
-  ) {}
+  constructor(private itemsService: ItemsService, private panel: SidePanelService) {}
 
   addItemToShipment(item: WarehouseItem): void {
     this.itemsService.addToCurrentShipment(item);
   }
 
-  removeShipment(ids: {tempId: string, id: number}) {
+  removeShipment(ids: { tempId: string; id: number }) {
     this.itemsService.removeFromCurrentShipment(ids.tempId, ids.id);
-    this.cdRef.detectChanges();
   }
 
   createShipment(items: ItemInShipment[]) {
