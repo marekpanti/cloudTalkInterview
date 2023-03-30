@@ -10,7 +10,8 @@
       >Created at: <strong>{{ shipment.createdAt | date }}</strong
       >, due to: <strong>{{ shipment.scheduledTo | date }}</strong></span
     >
-    <span>Status: <strong [ngClass]="shipment.status">{{ shipment.status }}</strong></span>
-    <button class="warn-button">Remove</button>
+    <span>Status: <strong [ngClass]="shipment.status" (click)="changeStatus(shipment.id)">{{ shipment.status }}</strong></span>
+    <button class="warn-button" (click)="removeShipment(shipment.id)">Remove</button>
+    <button class="primary-button" (click)="editShipment(shipment)">Edit shipment</button>
   </div>
 </div>

@@ -18,10 +18,8 @@ import { WarehouseItem } from '../../../../core/models/warehouse.model';
 })
 export class ListItemComponent {
   @Input() items: WarehouseItem[];
-  @Output() addToShipment: EventEmitter<WarehouseItem> = new EventEmitter<WarehouseItem>();
+  @Output() addToShipment: EventEmitter<WarehouseItem> =
+    new EventEmitter<WarehouseItem>();
 
-  ngOnChanges() {
-    console.log('tada');
-  }
   constructor() {}
 }

@@ -1,5 +1,5 @@
 <button (click)="close()">Close Panel</button>
-<h3>Create shipment(all fields required):</h3>
+<h3>{{ data.isEditing ? 'Edit shipment' : 'Create shipment(all fields required):'}}</h3>
 
 <form [formGroup]="shipmentForm">
   <label for="name">Company name:</label>
@@ -13,4 +13,5 @@
     <option [value]="shipmentStatuses.SHIPPED">Shipped</option>
   </select>
 </form>
-<button class="primary-button" [class.disabled]="!shipmentForm.valid" (click)="save()" [disabled]="!shipmentForm.valid">Create shipment</button>
+<button *ngIf="!data.isEditing" class="primary-button" [class.disabled]="!shipmentForm.valid" [disabled]="!shipmentForm.valid" (click)="save()">Create shipment</button>
+<button *ngIf="data.isEditing" class="primary-button" [class.disabled]="!shipmentForm.valid" [disabled]="!shipmentForm.valid" (click)="edit()">Edit shipment</button>

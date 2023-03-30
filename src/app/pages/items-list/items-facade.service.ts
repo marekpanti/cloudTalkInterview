@@ -21,7 +21,6 @@ export class ItemsService {
   removeFromCurrentShipment(tempId: string, itemId: number): void {
     const items = this.inShipment$.getValue();
     const filteredItems = items.filter(item => item.tempId !== tempId);
-    console.log(itemId);
     this.inShipment$.next([...filteredItems]);
     this.changeItemQuantity(itemId, 1);
   }
@@ -31,6 +30,18 @@ export class ItemsService {
     const currentItemIndex = currentItems.findIndex(currentItem => currentItem.id === itemId);
     currentItems[currentItemIndex].quantity += quantityDifferentiator;
     this.mockedItems$.next([...currentItems]);
+  }
+
+  // add quantities to items from hashItems data structure
+  setItemQuantityAfterShipmentDeletion(hashItems: { [itemId: number]: number }) {
+    Object.entries(hashItems).forEach(entry => {
+      const [key, value] = entry;
+
+      const currentItems = this.mockedItems$.getValue();
+      const currentItemIndex = currentItems.findIndex(currentItem => currentItem.id === +key);
+      currentItems[currentItemIndex].quantity += value;
+      this.mockedItems$.next([...currentItems]);
+    })
   }
 
   deleteCurrentShipment(): void {

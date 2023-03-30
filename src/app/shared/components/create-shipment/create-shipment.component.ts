@@ -9,9 +9,14 @@ import {
   Validators,
 } from '@angular/forms';
 import { ShipmentService } from 'src/app/pages/shipment-list/shipment-list.facade';
-import { LoginForm, Shipment, ShipmentStatus } from 'src/app/core/models/warehouse.model';
+import {
+  ItemInShipment,
+  LoginForm,
+  Shipment,
+  ShipmentStatus,
+} from 'src/app/core/models/warehouse.model';
 import { SIDE_PANEL_DATA } from 'src/app/shared/services/side-panel/side-panel.service';
-import { ItemsService } from '../../items-facade.service';
+import { ItemsService } from '../../../pages/items-list/items-facade.service';
 
 @Component({
   selector: 'app-create-shipment',
@@ -43,15 +48,23 @@ export class CreateShipmentComponent {
     private sidePanelRef: SidePanelRef,
     private shipmentService: ShipmentService,
     private itemsService: ItemsService,
-    @Inject(SIDE_PANEL_DATA) public data: string
+    // this should be typed, a general interface should be crated with isEditing: boolean, itemInShipment and shipment
+    @Inject(SIDE_PANEL_DATA) public data: any
   ) {}
 
   ngOnInit() {
-    console.log('tu', this.sidePanelRef);
+    if (this.data.isEditing) {
+      this.shipmentForm.setValue({
+        companyName: this.data.shipment.companyName,
+        scheduledTo: new Date(this.data.shipment.scheduledTo),
+        status: this.data.shipment.status,
+      });
+    }
   }
 
   save() {
-    // this logic should be in service
+    const lazyToDoRealUUID =
+      this.shipmentService.mockedShipments$.getValue().length + 1;
     if (
       this.shipmentForm.value.companyName &&
       this.shipmentForm.value.scheduledTo &&
@@ -63,13 +76,30 @@ export class CreateShipmentComponent {
         scheduledTo: this.shipmentForm.value.scheduledTo,
         createdAt: new Date(),
         lastUpdate: new Date(),
-        totalPrice: 2,
-        id: 2,
-        items: [1],
+        totalPrice: 2, // a service from facade should calculate the price from the items store based on saved items ids
+        id: lazyToDoRealUUID,
+        items: this.data.map((item: ItemInShipment) => item.id),
       };
-      console.log(shipment);
       this.shipmentService.createShipment(shipment);
       this.itemsService.deleteCurrentShipment();
+      this.close();
+    }
+  }
+
+  edit() {
+    if (
+      this.shipmentForm.value.companyName &&
+      this.shipmentForm.value.scheduledTo &&
+      this.shipmentForm.value.status
+    ) {
+      const shipment: Shipment = {
+        ...this.data.shipment,
+        companyName: this.shipmentForm.value.companyName,
+        status: this.shipmentForm.value.status,
+        scheduledTo: this.shipmentForm.value.scheduledTo,
+        lastUpdate: new Date(),
+      };
+      this.shipmentService.editShipment(shipment);
       this.close();
     }
   }

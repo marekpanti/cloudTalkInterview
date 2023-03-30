@@ -6,7 +6,7 @@ export const MockedShipments: Shipment[] = [
     id: 1,
     createdAt: new Date(),
     scheduledTo: new Date(),
-    items: [1, 1, 2],
+    items: [],
     totalPrice: 2,
     lastUpdate: new Date(),
     status: ShipmentStatus.CREATED,
